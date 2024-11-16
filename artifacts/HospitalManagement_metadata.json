@@ -6,6 +6,107 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_doctorAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "patientAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "appointmentTime",
+						"type": "uint256"
+					}
+				],
+				"name": "AppointmentConfirmed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "patientAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "appointmentTime",
+						"type": "uint256"
+					}
+				],
+				"name": "AppointmentRejected",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "appointments",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "patientAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "appointmentTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "confirmed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_appointmentTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_reason",
+						"type": "string"
+					}
+				],
+				"name": "bookAppointment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "doctor",
 				"outputs": [
@@ -19,53 +120,8 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "doctorConsultations",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "patientAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "requestTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "reason",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isAccepted",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_patientAddress",
-						"type": "address"
-					}
-				],
-				"name": "getPatientConsultations",
+				"inputs": [],
+				"name": "getAppointments",
 				"outputs": [
 					{
 						"components": [
@@ -76,7 +132,7 @@
 							},
 							{
 								"internalType": "uint256",
-								"name": "requestTime",
+								"name": "appointmentTime",
 								"type": "uint256"
 							},
 							{
@@ -86,93 +142,13 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "isAccepted",
+								"name": "confirmed",
 								"type": "bool"
 							}
 						],
-						"internalType": "struct HospitalManagement.ConsultationRequest[]",
+						"internalType": "struct HospitalManagement.Appointment[]",
 						"name": "",
 						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_doctorAddress",
-						"type": "address"
-					}
-				],
-				"name": "getPendingConsultations",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "address",
-								"name": "patientAddress",
-								"type": "address"
-							},
-							{
-								"internalType": "uint256",
-								"name": "requestTime",
-								"type": "uint256"
-							},
-							{
-								"internalType": "string",
-								"name": "reason",
-								"type": "string"
-							},
-							{
-								"internalType": "bool",
-								"name": "isAccepted",
-								"type": "bool"
-							}
-						],
-						"internalType": "struct HospitalManagement.ConsultationRequest[]",
-						"name": "",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "patientConsultations",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "patientAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "requestTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "reason",
-						"type": "string"
-					},
-					{
-						"internalType": "bool",
-						"name": "isAccepted",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -238,40 +214,17 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_patientAddress",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
-						"name": "_requestIndex",
+						"name": "_appointmentIndex",
 						"type": "uint256"
 					},
 					{
 						"internalType": "bool",
-						"name": "_accept",
+						"name": "_confirm",
 						"type": "bool"
 					}
 				],
-				"name": "respondToConsultationRequest",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_doctorAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "_reason",
-						"type": "string"
-					}
-				],
-				"name": "sendConsultationRequest",
+				"name": "respondToAppointment",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -290,7 +243,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Hospital.sol": "HospitalManagement"
+			"Appointment.sol": "HospitalManagement"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -304,12 +257,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Hospital.sol": {
-			"keccak256": "0x58c664b657cef3eebcf1ff66348e9da493e484799e2f8ed529b8b16134bee38b",
+		"Appointment.sol": {
+			"keccak256": "0xa7827b7b2522da5fb8d8cb7081b08fa88b0e6d767063dd8cd1b34de106ecab8e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://58758b101aa6d8add072864eadb28b9b3611e5dfcae9d5c7a40ad3096bfbdcd3",
-				"dweb:/ipfs/QmP5KDhoqZ1bHjD29jo2LKe96cVLBa4hCJ7fCMfY4URoPm"
+				"bzz-raw://3c5f365e6bdc6c1a965bc4852486e838486c40f0264cbc4c85ef6eb5c82cc6a5",
+				"dweb:/ipfs/QmR1fjSW91WpYCEazRCxGhaxYdggC9DfgQHNvDYJWWPoSQ"
 			]
 		}
 	},
